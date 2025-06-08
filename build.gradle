@@ -53,13 +53,21 @@ tasks.register('generateData', JavaExec) {
 tasks.register('plotGraph', Exec) {
     group = 'relatorio'
     description = 'Gera gráfico com Gnuplot'
-    dependsOn 'generateData'
+    // dependsOn 'generateData'
     workingDir = project.projectDir
-    commandLine '/usr/bin/gnuplot', './grafico/gerar_grafico.gnuplot'
+    commandLine '/usr/bin/gnuplot', './grafico/exercicios.gnuplot'
 
     // Ajuda o Gradle a saber que precisa gerar esse arquivo
-    inputs.file("$project.projectDir/dados/input.csv")
-    outputs.file("$project.projectDir/dados/grafico.jpg")
+    inputs.file("$project.projectDir/grafico/exercicios.gnuplot")
+
+    inputs.file("$project.projectDir/dados/exercicio1.csv")
+    inputs.file("$project.projectDir/grafico/exercicio1.gnuplot")
+    outputs.file("$project.projectDir/dados/exercicio1.png")
+
+    inputs.file("$project.projectDir/dados/exercicio3.csv")
+    inputs.file("$project.projectDir/grafico/exercicio3.gnuplot")
+    outputs.file("$project.projectDir/dados/exercicio3.png")
+
 }
 
 tasks.register('compileLatexOnly', Exec) {
@@ -75,20 +83,31 @@ tasks.register('compileLatexOnly', Exec) {
 
     workingDir = file("${projectDir}/latex")
 
-    commandLine latexCommand, '-pdf', 'relatorio.tex'
+    commandLine latexCommand, '-pdf', '-bibtex', 'relatorio.tex'
 
     // Declara dependência explícita do gráfico e todos arquivo de Artigo.
-    inputs.file("$project.projectDir/dados/grafico.jpg")
+    inputs.file("$project.projectDir/dados/exercicio1.png")
     inputs.file("$project.projectDir/latex/relatorio.tex")
-    inputs.file("$project.projectDir/latex/capitulos/abstract.tex")
-    inputs.file("$project.projectDir/latex/capitulos/conclusao.tex")
-    inputs.file("$project.projectDir/latex/capitulos/fundamentacao.tex")
-    inputs.file("$project.projectDir/latex/capitulos/introducao.tex")
-    inputs.file("$project.projectDir/latex/capitulos/metodologia.tex")
-    inputs.file("$project.projectDir/latex/capitulos/resultados.tex")
+    inputs.file("$project.projectDir/latex/capitulo_abstract.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-1.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-1-Resultado.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-2.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-2-Resultado.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-3.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-3-Resultado.tex")
+    inputs.file("$project.projectDir/latex/comparacao_exercicio2.tex")
+    inputs.file("$project.projectDir/latex/comparacao_exercicio3.tex")
+    inputs.file("$project.projectDir/latex/comparacao_exercicio4.tex")
     inputs.file("$project.projectDir/latex/referencias.bib")
+    inputs.file("$project.projectDir/dados/exercicio1.png")
+    inputs.file("$project.projectDir/dados/exercicio3.png")
+    inputs.file("$project.projectDir/latex/imagens/exercicio3_parte_1.jpg")
+    inputs.file("$project.projectDir/latex/Exercicio-4.tex")
+    inputs.file("$project.projectDir/latex/Exercicio-4-Resultado.tex")
+    inputs.file("$project.projectDir/latex/conclusao.tex")
 
-    outputs.file("$project.projectDir/latex/relatorio-final.pdf")
+
+    outputs.file("$project.projectDir/latex/relatorio.pdf")
 }
 
 
@@ -109,17 +128,17 @@ tasks.register('compileLatex', Exec) {
         commandLine latexCommand, '-pdf', 'relatorio.tex'
 
         // Declara dependência explícita do gráfico e todos arquivo de Artigo.
-        inputs.file("$project.projectDir/dados/grafico.jpg")
+        //inputs.file("$project.projectDir/dados/grafico.jpg")
         inputs.file("$project.projectDir/latex/relatorio.tex")
-        inputs.file("$project.projectDir/latex/capitulos/abstract.tex")
-        inputs.file("$project.projectDir/latex/capitulos/conclusao.tex")
-        inputs.file("$project.projectDir/latex/capitulos/fundamentacao.tex")
-        inputs.file("$project.projectDir/latex/capitulos/introducao.tex")
-        inputs.file("$project.projectDir/latex/capitulos/metodologia.tex")
-        inputs.file("$project.projectDir/latex/capitulos/resultados.tex")
+        inputs.file("$project.projectDir/latex/capitulo_abstract.tex")
+        inputs.file("$project.projectDir/latex/conclusao.tex")
+        inputs.file("$project.projectDir/latex/fundamentacao.tex")
+        inputs.file("$project.projectDir/latex/Exercicio-1.tex")
+        inputs.file("$project.projectDir/latex/metodologia.tex")
+        inputs.file("$project.projectDir/latex/resultados.tex")
         inputs.file("$project.projectDir/latex/referencias.bib")
 
-        outputs.file("$project.projectDir/latex/relatorio-final.pdf")
+        outputs.file("$project.projectDir/latex/relatorio.pdf")
 }
 
 

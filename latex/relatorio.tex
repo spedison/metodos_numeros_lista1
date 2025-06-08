@@ -1,4 +1,4 @@
-\documentclass[twocolumn,10pt]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{graphicx}
@@ -9,31 +9,68 @@
 \usepackage{setspace}
 \usepackage{url}
 \usepackage[alf]{abntex2cite}
+\bibliographystyle{abntex2-alf}  % ou abntex2-num
 \usepackage{indentfirst}
-
+\usepackage{enumitem}
 \geometry{a4paper, margin=2.5cm}
 \setstretch{1.2}
+\usepackage{listings}
+\usepackage{xcolor} % Para cores
+\usepackage{booktabs}  % Tabelas mais elegantes
+\usepackage{siunitx}   % Alinhamento numérico opcional
 
-\title{\bfseries Análise de Sinais com Geração Automatizada}
-\author{Edison Araújo}
+
+
+\lstdefinestyle{python}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{gray},
+    showstringspaces=false,
+    frame=single,
+    breaklines=true
+}
+
+\lstdefinestyle{gnuplot}{
+    language=sh, % ou bash (não há suporte nativo direto a gnuplot)
+    basicstyle=\ttfamily\small,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
+
+\title{\bfseries Primeira lista de exercícios}
+\author{Edison Ribeiro Araújo - RA : 24202520836}
 \date{\today}
 
 \begin{document}
 
-    \twocolumn[
         \maketitle
-        \input{capitulos/abstract}
-    ]
+        \input{capitulo_abstract}
 
-    \input{capitulos/introducao}
-    \input{capitulos/fundamentacao}
-    \input{capitulos/metodologia}
-    \vspace{-1cm}
-    \input{capitulos/resultados}
-    \input{capitulos/conclusao}
+        \input{Exercicio-1}
+        \input{Exercicio-1-Resultado}
+        \newpage
 
+        \input{Exercicio-2}
+        \input{Exercicio-2-Resultado}
 
-    \bibliography{referencias}
+        \input{Exercicio-3}
+        \input{Exercicio-3-Resultado}
+        \newpage
 
+        \input{Exercicio-4}
+        \input{Exercicio-4-Resultado}
+
+%%    \input{capitulos/fundamentacao}
+%%    \input{capitulos/metodologia}
+%%    \vspace{-1cm}
+%%    \input{capitulos/resultados}
+        \input{conclusao}
+        \bibliography{referencias}
 \end{document}
 

@@ -1,0 +1,46 @@
+\subsection{Resultado - Exercício 2}
+
+Os passos são:
+\begin{itemize}[leftmargin=3.5em, itemsep=-.5mm, topsep=0.5mm]
+    \item Derivar $f^{(k)}(t)$ de forma genérica
+    \item Descobrir quanto vale $f^{(k)}(0)$ de forma genérica.
+    \item Expandir para a Série de taylor para forma genérica
+    \item Gerar tabela para comparação
+    \item Apresentar o código Python
+ \end{itemize}
+
+\subsubsection{Derivar $f^{(k)}(t)$ de forma genérica}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{imagens/exercicio2_parte1}
+    \caption{Calculando as derivadas de $f(t)$ como resultado $f^{(k)}(t) = \frac{n!}{(n-k)!} \cdot (1 + t)^{n-k}$}
+    \label{fig:exe2_parte1}
+\end{figure}
+
+\subsubsection{Descobrir quanto vale $f^{(k)}(0)$ de forma genérica.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{imagens/exercicio2_parte2}
+    \caption{Calculando $f^{(k)}(t)$ para $t = x_0 = 0$}
+    \label{fig:exe2_parte2}
+\end{figure}
+
+\subsubsection{Expandir para a Série de taylor para forma genérica}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{imagens/exercicio2_parte3}
+    \caption{Calculando $f(t)$ em para $t = x_0 = 0$ usando a Série de Taylor comprovando o enunciado.}
+    \label{fig:exe2_parte3}
+\end{figure}
+Como k não pode ser maior que n, a última linha mostra que limitamos k entre 0 e n e não mais entre 0 e $\infty$
+
+\subsubsection{Gerar tabela para comparação}
+\input{comparacao_exercicio2}
+
+\subsubsection{Apresentar o código Python}
+\lstinputlisting[style=python]{scripts/exercicio2.py}
+Código para testar a solução do exercício 2.
+
+\newpage
+

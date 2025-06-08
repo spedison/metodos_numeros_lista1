@@ -1,0 +1,156 @@
+\subsection{Resultado - Exercício 1}
+
+Os passos são:
+\begin{itemize}[leftmargin=3.5em, itemsep=-.5mm, topsep=0.5mm]
+    \item Derivar f(x) 4 vezes.
+    \item Aplicar a série de Taylor
+    \item Gerar dados em Pyhon
+    \item Imprimir Gráfico usando GnuPlot
+    \item Apresentar o código Python e GnuPlot
+ \end{itemize}
+
+\subsubsection{Derivar f(x) 4 vezes}
+
+derivar a função $f(x) = \log(5 + 6x)$ usando a regra da cadeia.
+Primeiro, identificamos as funções internas:
+
+\[
+    \begin{aligned}
+        f(g(x)) &= \log(5 + 6x) \\
+        f(x) &= \log(x) \\
+        g(x) &= 5 + 6x
+    \end{aligned}
+\]
+
+Aplicamos a regra da cadeia:
+
+\[
+    \frac{d}{dx} f(g(x)) = f'(g(x)) \cdot g'(x)
+\]
+
+Calculamos as derivadas individuais:
+
+\[
+    \begin{aligned}
+        f(x) &= \log(x) \\
+        f'(x) &= \frac{1}{x} \\
+        g(x) &= 5 + 6\cdot x \\
+        g'(x) &= 6
+    \end{aligned}
+\]
+
+Substituindo na regra da cadeia:
+
+\[
+    \frac{d}{dx} f(g(x)) = \frac{1}{5 + 6x} \cdot 6 = \frac{6}{5 + 6x}
+\]
+
+Portanto, a derivada da função é:
+
+\[
+    f'(x) = \frac{6}{5 + 6x}
+\]
+Aplicamos a derivada mais uma vez:
+
+\[
+    \begin{aligned}
+        f''(x) = 6 * \frac{d}{dx} (5 + 6x)^{-1} \\
+        f''(x) = - 6 * 6 *  \frac{1}{ (5 + 6x)^{2} } \\
+        f''(x) = - \frac{36}{ (5 + 6x)^{2} } \\
+    \end{aligned}
+\]
+
+Repetindo o processos temos:
+
+\[
+    \begin{aligned}
+        f'''(x) = \frac{d}{dx} -\frac{36}{(5 + 6x)^{2}} \\
+        f'''(x) = - 36 \cdot \frac{d}{dx} (5 + 6x)^{-2} \\
+        f'''(x) = 36 \cdot 6 \cdot 2 \cdot (5 + 6x)^{-3} \\
+        f'''(x) = 432 \cdot (5 + 6x)^{-3} \\
+        f'''(x) = \frac{432}{ (5 + 6x)^{3} } \\
+    \end{aligned}
+\]
+
+Fazendo a última derivada:
+
+\[
+    \begin{aligned}
+        f''''(x) =\frac{d}{dx} \frac{432}{ (5 + 6x)^{3} }\\
+        f''''(x) = 432 \cdot \frac{d}{dx} \cdot (5 + 6x)^{-3}\\
+        f''''(x) = -3 \cdot 6 \cdot 432 \cdot (5 + 6x)^{-4}\\
+        f''''(x) = -7776 \cdot (5 + 6x)^{-4}\\
+        f''''(x) = \frac{-7776}{(5 + 6x)^{4}}\\
+    \end{aligned}
+\]
+
+\subsubsection{Aplicar a série de Taylor}
+
+Agora com as derivadas em mãos:
+
+\[
+    \begin{aligned}
+        f'(x) =    \frac{6}{5 + 6x} \\
+        f''(x) =   \frac{-36}{ (5 + 6x)^{2} } \\
+        f'''(x) =  \frac{432}{ (5 + 6x)^{3} } \\
+        f''''(x) = \frac{-7776}{(5 + 6x)^{4}}\\
+    \end{aligned}
+\]
+
+Podemos aplicar a Série de Taylor.
+\[
+    f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+\]
+
+Vamos avaliar o valor em $X_0 = 0$ para cada uma das derivadas.
+    \begin{gather*}
+        f(0) =    \log(5) = 1.6094 \\
+        f'(0) =    \frac{6}{5} \\
+        f''(0) =   \frac{-36}{5^{2}}  = \frac{-36}{25} \\
+        f'''(0) =  \frac{432}{5^{3}}  = \frac{432}{125} \\
+        f''''(0) = \frac{-7776}{5^{4}} = \frac{-7776}{625} \\
+    \end{gather*}
+
+Montando as Séries temos:
+    \begin{gather*}
+        P_0 (x) = f(0) = \log(5) = 1.6094\\
+        P_1 (x) = P_0(x) + \frac{\frac{6}{5}}{1!} \cdot x = P_0(x) + \frac{6 \cdot x}{5} \\
+        P_2 (x) = P_1(x) + \frac{\frac{-36}{25}}{2!} \cdot x^2 = P_1(x) + \frac{-36 \cdot x^2}{50} \\
+        P_3 (x) = P_2(x) + \frac{\frac{432}{25}}{3!} \cdot x^3 = P_2(x) + \frac{432 \cdot x^3}{150} \\
+        P_4 (x) = P_3(x) + \frac{\frac{7776}{625}}{4!} \cdot x^3 = P_3(x) + \frac{-7776 \cdot x^4}{15000} \\
+    \end{gather*}
+
+\subsubsection{Gerar dados em Pyhon}
+
+Com todos os coeficientes do polinômio podemos codificar e executando o programa em Python com o comando para criar o arquivo com os dados: python exercicio1.py
+
+%%\newpage
+
+\subsubsection{Imprimir Gráfico usando GnuPlot}
+
+Agora com todas as funções definidas, e dados gerados podemos gerar o gráfico para visualizar as diferenças:
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=.82\textwidth]{imagens/exercicio1.png}
+    \caption{Função $\log(5+6*x)$ aproximada pelo série de taylor em torno de $X_0=0$}
+    \label{fig:grafico}
+\end{figure}
+
+\newpage
+
+\subsubsection{Apresentar código Python e GnuPlot}
+
+\lstinputlisting[style=python]{scripts/exercicio1.py}
+Código para a geração dos dados no arquivo exercício1.csv
+\newpage
+
+\lstinputlisting[style=gnuplot]{scripts/exercicio1.gnuplot}
+Código para do gráfico do exercício1 baseado nos dados do arquivo exercício1.csv
+
+\newpage
+
+
+
+
+

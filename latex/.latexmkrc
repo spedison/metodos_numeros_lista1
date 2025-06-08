@@ -4,7 +4,7 @@ $interaction = 'nonstopmode';
 $synctex = 1;
 
 $out_dir = '.';           # Todos os arquivos compilados vão para ./build
-$jobname = 'relatorio-final';
+$jobname = 'relatorio';
 
 # Cria o diretório se não existir
 # mkdir $out_dir unless -d $out_dir;

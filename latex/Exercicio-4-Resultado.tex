@@ -1,0 +1,88 @@
+\subsection{Resultado - Exercício 4}
+
+Os passos são:
+\begin{itemize}[leftmargin=3.5em, itemsep=-.5mm, topsep=0.5mm]
+    \item Calcular a séria para a função $f(x) = \frac{1}{1 - x}$
+    \item Aplicar $t^2$ no resultado
+    \item Comparar e aplicar com a função $f(x) = arctan(x)$
+    \item Problemas com a série
+    \item Melhoramentos para redução das diferenças
+    \item Apresentação dos testes solicitados
+    \item Apresentar o código Python
+\end{itemize}
+
+\subsubsection{Calcular a séria para a função $f(x) = \frac{1}{1 - x}$}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{imagens/exercicio4_parte1}
+    \caption{Calculando a série de Taylor de $f(x) = \frac{1}{1 - x}$}
+    \label{fig:exe4_parte1}
+\end{figure}
+
+\subsubsection{Aplicar $t^2$ no resultado}
+
+Ao aplicar $t^2$ em $f(x)$ definida pela série $f(x) = \sum_{n=0}^{\infty} (-1)^n \cdot x^n $ ou escrita na forma:
+
+$f(x) = 1 - x + x^2 - x^3 + x^4 - x^5 ... $  Agora teremos como resultado
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{imagens/exercicio4_parte2}
+    \caption{Calculando a série de Taylor desejada $f(x) = \frac{1}{1 - x^2}$}
+    \label{fig:exe4_parte2}
+\end{figure}
+
+\subsubsection{Comparar e aplicar com a função $f(x) = arctan(x)$}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{imagens/exercicio4_parte3}
+    \caption{Calculando a série de Taylor para $f(x) = arctan(x)$}
+    \label{fig:exe4_parte3}
+\end{figure}
+
+Assim temos que $f(x) = arctan(x) = x + \frac{-x^3}{3} + \frac{x^5}{5} + ... + \frac{(-1)^n \cdot x^{2 \cdot n + 1}}{2 \cdot n + 1} $
+
+\subsubsection{Problemas com a série}
+
+Foi implementado a série usando a fórmula de Hormer com sucesso, no entando, para valores acima de um $(1.0)$ a série diverge.
+Parar evitar esse problema utilizamos relações trigonométricas do site \cite{site-geek} para manter o valor de x menor que 1.
+
+Isso foi colocado no código na função \texttt{calcula\_f\_x\_taylor\_com\_horner\_ajustado}. Está sendo utilizado algumas características do \texttt{arctan} para ficarmos entre $0.$ e $1.$.
+
+\subsubsection{Melhoramentos para redução das diferenças}
+\label{sec:melhoramentos-serie-arctan}
+Foi usado a caractéricas que $arctan(-x) = -arctan(x)$. Essa característica mantém os valores de $x$ sempre no domínio positivo.\\
+Outra característica foi usada para manter o domínio de x entre 0 e 1 que foi:
+\begin{itemize}
+    \item[] $\arctan\left(\frac{1}{x}\right) = \frac{\pi}{2} - \arctan(x) = \mathrm{arccot}(x), \quad \text{se } x > 0$
+\end{itemize}
+
+O resultado final dos ajustes está na Tabela~\ref{tab:exercicio_4_resultados} e são muito significativos.\\
+
+Executando o programa com 60 mil valores de -300 a +299.99 temos :
+
+\begin{table}[h!]
+    \centering
+    \caption{Testes do Exercício 4}
+    \label{tab:exercicio_4_critica_1}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Tipo} & \textbf{Quantidade Total} & \textbf{Erros $>1\%$} & \textbf{Erros $<1\%$} & \textbf{Intervalo com erro $>1 \%$} \\
+        \hline
+        Com Ajuste & 60.000 & 11 & 59.989 & [0.95 , 1.05] \\
+        Sem Ajuste & 60.000 & 29906 & 30095 & [0.95 , 300.] \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Analisando os intervalos de valores com erro segundo Tabela~\ref{tab:exercicio_4_critica_1}, os 11 valores com erro maior que $1 \%$ ficam entre $0.95$ e $1.05$.\\
+Ao contrário do que acontece quando não realizamos o ajuste que tem uma quantidade que é praticamente $50 \%$ dos itens que tem o módulo entre 0.95 e 300.\\
+Assim, o ajuste foi muito eficiente e reduz substancialmente a quantidade de erros devido a convergência da série usada.
+
+\subsubsection{Apresentação dos testes solicitados}
+    \input{comparacao_exercicio4}
+
+\subsubsection{Apresentar o código Python}
+    \lstinputlisting[style=python]{scripts/exercicio4.py}
+    Código para solução e testes do exercício 4.
