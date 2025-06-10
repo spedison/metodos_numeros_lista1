@@ -19,11 +19,13 @@ Os passos são:
     \label{fig:exe4_parte1}
 \end{figure}
 
+\newpage
 \subsubsection{Aplicar $t^2$ no resultado}
 
 Ao aplicar $t^2$ em $f(x)$ definida pela série $f(x) = \sum_{n=0}^{\infty} (-1)^n \cdot x^n $ ou escrita na forma:
 
-$f(x) = 1 - x + x^2 - x^3 + x^4 - x^5 ... $  Agora teremos como resultado
+$f(x) = 1 - x + x^2 - x^3 + x^4 - x^5 \mathellipsis $ \\
+Agora teremos como resultado
 
 \begin{figure}[H]
     \centering
@@ -31,6 +33,10 @@ $f(x) = 1 - x + x^2 - x^3 + x^4 - x^5 ... $  Agora teremos como resultado
     \caption{Calculando a série de Taylor desejada $f(x) = \frac{1}{1 - x^2}$}
     \label{fig:exe4_parte2}
 \end{figure}
+
+A Figura~\ref{fig:exe4_parte2} mostra que o resultado da expansão usando a série de Taylor para $f(t) = \frac{1}{1 + t^2}$ é
+
+$f(t) = \sum_{n=0}^{\infty} (-1)^n \cdot t^{2 \cdot n}$
 
 \subsubsection{Comparar e aplicar com a função $f(x) = arctan(x)$}
 
@@ -41,14 +47,14 @@ $f(x) = 1 - x + x^2 - x^3 + x^4 - x^5 ... $  Agora teremos como resultado
     \label{fig:exe4_parte3}
 \end{figure}
 
-Assim temos que $f(x) = arctan(x) = x + \frac{-x^3}{3} + \frac{x^5}{5} + ... + \frac{(-1)^n \cdot x^{2 \cdot n + 1}}{2 \cdot n + 1} $
+Assim temos que $f(x) = arctan(x) = x + \frac{-x^3}{3} + \frac{x^5}{5} + \mathellipsis + \frac{(-1)^n \cdot x^{2 \cdot n + 1}}{2 \cdot n + 1} $
 
 \subsubsection{Problemas com a série}
 
-Foi implementado a série usando a fórmula de Hormer com sucesso, no entando, para valores acima de um $(1.0)$ a série diverge.
-Parar evitar esse problema utilizamos relações trigonométricas do site \cite{site-geek} para manter o valor de x menor que 1.
+Foi implementado a série usando o algoritmo de Hormer com sucesso, no entando, para valores acima de um $(1.0)$ a série diverge.
+Isso causa um erros consideráveis. Parar evitar esse problema utilizamos relações trigonométricas do site \cite{site-geek} para manter o valor de x menor que 1.
 
-Isso foi colocado no código na função \texttt{calcula\_f\_x\_taylor\_com\_horner\_ajustado}. Está sendo utilizado algumas características do \texttt{arctan} para ficarmos entre $0.$ e $1.$.
+Isso foi colocado no código na função \texttt{calcula\_f\_x\_taylor\_com\_horner\_ajustado}. Está sendo utilizado algumas características do \texttt{arctan} para ficarmos entre $0.$ e $1.$ além das simetrias de uma função impar.
 
 \subsubsection{Melhoramentos para redução das diferenças}
 \label{sec:melhoramentos-serie-arctan}
@@ -60,11 +66,11 @@ Outra característica foi usada para manter o domínio de x entre 0 e 1 que foi:
 
 O resultado final dos ajustes está na Tabela~\ref{tab:exercicio_4_resultados} e são muito significativos.\\
 
-Executando o programa com 60 mil valores de -300 a +299.99 temos :
+Executando o programa com 60 mil valores de $-300$ a $+299.99$ temos:
 
 \begin{table}[h!]
     \centering
-    \caption{Testes do Exercício 4}
+    \caption{Quadro comparativo com valores entre $-300$ e $299.99$ com séria de $arctan(x)$ usando e não usando ajuste considerado em \cite{site-geek}}
     \label{tab:exercicio_4_critica_1}
     \begin{tabular}{|c|c|c|c|c|}
         \hline

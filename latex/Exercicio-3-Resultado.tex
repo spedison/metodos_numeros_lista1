@@ -12,7 +12,7 @@ Os passos são:
 \newpage
 
 \subsubsection{Transformar $sin(x)$ em série.}
-Temos os calculos para escrever $sin(x)$ usando a Série de Taylor.
+Temos os cálculos para escrever $sin(x)$ usando a Série de Taylor.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{imagens/exercicio3_parte_1}
@@ -33,36 +33,37 @@ Continuando o raciocício e aplicando o resultado do resíduo.
 \begin{figure}[H]
     \centering
     \includegraphics[width=.80\textwidth]{imagens/exercicio3_parte_3}
-    \caption{Definindo a equação parar encontrar o valor de N. Essa equação foi testada com valores maiores que 2 e encontramos como verdadeiro o valor 12}
+    \caption{Definindo a equação parar encontrar o valor de N. Essa equação foi testada com valores maiores que 2 e encontramos como verdadeiro o valor 13}
     \label{fig:lista_exercicio3_parte3}
 \end{figure}
 
+\input{tabela_residuos_exercicio3}
 
+Usando a tabela Tabela~\ref{tab:exercicio_3_definir_grau_minimo} podemos ver que o menor grau que polinômio deve ter é 13. \\
+Assim vamos definir 13 na chamada da função \texttt{calculaFTaylor} limitando o maior grau do polinômio em $\frac{x^{13}}{13!}$.
 
-\newpage
 \subsubsection{Imprimir a função na forma de série e usando numpy no python}
 
-Podemos ver nos gráficos da figura \ref{fig:grafico_exe3} que a diferença dos valores entre $-2 \cdot \pi$ a $2 \cdot \pi$ tem basicamente ruído pois está na ordem de $10^{-16}$.
+Podemos ver nos gráficos da figura \ref{fig:grafico_exe3} que a diferença dos valores entre $-3 \cdot \pi$ a $3 \cdot \pi$ tem erros na ordem de $10^{-9}$ e que eles são maiores quando $ x = \frac{(2 \cdot n + 1)}{2} \cdot \pi $ para qualquer valor de n inteiro.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.18\textwidth]{imagens/exercicio3.png}
-    \caption{Gráfico da função seno gerada por numpy e $P_2(x)$ e $P_{12}(x)$ e o módulo da diferença de $F(x)$ e $P_{12}(x)$}
+    \includegraphics[width=.95\textwidth]{imagens/exercicio3.png}
+    \caption{Gráfico da função seno gerada por numpy e $P_2(x)$ e $P_{13}(x)$ e o módulo da diferença de $F(x)$ e $P_{13}(x)$}
     \label{fig:grafico_exe3}
 \end{figure}
 
-\newpage
 
 \subsubsection{Realizar os testes}
 
 \input{comparacao_exercicio3}
 
-Vale lembrar que: como temos valores muito próximos em uma subtração essa diferença pode ser um ruido de arredondamento.
-Por outro lado como a diferença é menor que $10^{-7}$, o que satisfaz a necessidade da aplicação.\\
+Vale lembrar que como temos valores muito próximos em uma subtração essa diferença pode ser um ruido de arredondamento.
+Por outro lado, como o módulo da diferença é ordens de grandeza menor que o especificado ($10^{-7}$), esse erro satisfaz a necessidade da aplicação.\\
 
 \subsubsection{Apresentar o código Python e GnuPlot}
 \label{sec:caracteristicas-funcao-sin}
-$sin(x)$ é função periódica assim ela é limitando os valores aplicados a $P_{n}(x)$ para valores entre $0$ a $\frac{\pi}{2}$.
-Isso está implementado na função \texttt{ajusta\_x\_calculo\_seno} usando as simetrias e periodicidades da função seno.
+$sin(x)$ é função periódica e tem as simetrias de uma função impar. Assim ela foi limitanda com valores entre $0$ a $\frac{\pi}{2}$.
+Isso está implementado na função \texttt{ajusta\_x\_calculo\_seno} usando as características de simetria e periodicidade do $sin(x)$.
 
 \lstinputlisting[style=python]{scripts/exercicio3.py}
 Código para a geração dos dados em Python.

@@ -3,9 +3,10 @@ set key outside
 set xlabel "x"
 set ylabel "F(x)"
 set title "Comparacao de F(x), P1(x), P2(x), P3(x), P4(x)"
-set terminal pngcairo size 1280,720 enhanced font 'Verdana,12'
+set terminal pngcairo size 1280,720 enhanced font 'Verdana,13' background rgb "#f5f5f3"
 set output "./dados/exercicio1.png"
-
+set style line 1 lt rgb "#000000" lw 1 dt 2
+set zeroaxis ls 1
 plot \
     "./dados/exercicio1.csv" using 1:2 with lines linewidth 2 linecolor rgb "#1f77b4" title "F(x)", \
     "./dados/exercicio1.csv" using 1:3 with lines linewidth 2 linecolor rgb "#ff7f0e" title "P1(x)", \

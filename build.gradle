@@ -105,6 +105,8 @@ tasks.register('compileLatexOnly', Exec) {
     inputs.file("$project.projectDir/latex/Exercicio-4.tex")
     inputs.file("$project.projectDir/latex/Exercicio-4-Resultado.tex")
     inputs.file("$project.projectDir/latex/conclusao.tex")
+    inputs.file("$project.projectDir/latex/tabela_residuos_exercicio3.tex")
+
 
 
     outputs.file("$project.projectDir/latex/relatorio.pdf")
