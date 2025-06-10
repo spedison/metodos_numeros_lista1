@@ -9,14 +9,12 @@ Os passos são:
     \item Apresentar o código Python e GnuPlot
  \end{itemize}
 
-\newpage
-
 \subsubsection{Transformar $sin(x)$ em série.}
 Temos os cálculos para escrever $sin(x)$ usando a Série de Taylor.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{imagens/exercicio3_parte_1}
-    \caption{Escrevendo $sin(x)$ na forma de série entre $0$ e $\pi/2$}
+    \includegraphics[width=.46\textwidth]{imagens/exercicio3_parte_1}
+    \caption{Escrevendo $sin(x)$ na forma de série entre $0$ e $\frac{\pi}{2}$ obtemos como resultado $\sum_{n=0}^{\infty} -1^n \frac{x^{2 \cdot n + 1}}{(2 \cdot n + 1)!} $}
     \label{fig:lista_exercicio3_parte1}
 \end{figure}
 \newpage
@@ -57,7 +55,7 @@ Podemos ver nos gráficos da figura \ref{fig:grafico_exe3} que a diferença dos 
 
 \input{comparacao_exercicio3}
 
-Vale lembrar que como temos valores muito próximos em uma subtração essa diferença pode ser um ruido de arredondamento.
+Vale lembrar que como temos valores muito próximos em uma subtração essa diferença pode ser um ruído de arredondamento.
 Por outro lado, como o módulo da diferença é ordens de grandeza menor que o especificado ($10^{-7}$), esse erro satisfaz a necessidade da aplicação.\\
 
 \subsubsection{Apresentar o código Python e GnuPlot}
@@ -66,16 +64,9 @@ $sin(x)$ é função periódica e tem as simetrias de uma função impar. Assim 
 Isso está implementado na função \texttt{ajusta\_x\_calculo\_seno} usando as características de simetria e periodicidade do $sin(x)$.
 
 \lstinputlisting[style=python]{scripts/exercicio3.py}
-Código para a geração dos dados em Python.
-
-\newpage
+Código para a geração dos dados em Python.\\
+\\
+O Código em gnuplot lê o arquivo de dados e gera os gráficos usando um eixo x em múltiplos de PI para facilitar a leitura e com limites de range bem específicos para que fique o mais claro possível a sua leitura.\\
+Além disso os 4 gráficos são agrupados em um único arquivo com alinhamento adequado para poder comparar os valores em x.
 \lstinputlisting[style=gnuplot]{scripts/exercicio3.gnuplot}
 Código em GnuPlot para geração dos gráficos do exercício3 baseado nos dados
-
-
-\newpage
-
-
-
-
-

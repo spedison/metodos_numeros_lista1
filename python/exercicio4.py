@@ -1,7 +1,6 @@
 import math
 import numpy as np
 
-
 def criar_termos_polinomio(n):
     return [(-1.) ** i / (2 * i + 1) for i in reversed(range(n))]
 
@@ -41,7 +40,6 @@ def executar_testes():
     \toprule
     \textbf{$x$} & \textbf{$f(x)$ (NP)} & \textbf{$P_{10}(x)$  s/ ajuste} & \textbf{$P_{10}(x)$ c/ ajuste} & \textbf{Dif. sem ajuste} & \textbf{Dif. com ajuste}\\
     \midrule
-    
     """
 
     tail = r"""

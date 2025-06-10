@@ -11,15 +11,16 @@ Os passos são:
     \item Apresentar o código Python
 \end{itemize}
 
+\newpage
+
 \subsubsection{Calcular a séria para a função $f(x) = \frac{1}{1 - x}$}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.1\textwidth]{imagens/exercicio4_parte1}
+    \includegraphics[width=.7\textwidth]{imagens/exercicio4_parte1}
     \caption{Calculando a série de Taylor de $f(x) = \frac{1}{1 - x}$}
     \label{fig:exe4_parte1}
 \end{figure}
 
-\newpage
 \subsubsection{Aplicar $t^2$ no resultado}
 
 Ao aplicar $t^2$ em $f(x)$ definida pela série $f(x) = \sum_{n=0}^{\infty} (-1)^n \cdot x^n $ ou escrita na forma:
@@ -42,7 +43,7 @@ $f(t) = \sum_{n=0}^{\infty} (-1)^n \cdot t^{2 \cdot n}$
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{imagens/exercicio4_parte3}
+    \includegraphics[width=.7\textwidth]{imagens/exercicio4_parte3}
     \caption{Calculando a série de Taylor para $f(x) = arctan(x)$}
     \label{fig:exe4_parte3}
 \end{figure}
@@ -82,8 +83,8 @@ Executando o programa com 60 mil valores de $-300$ a $+299.99$ temos:
     \end{tabular}
 \end{table}
 
-Analisando os intervalos de valores com erro segundo Tabela~\ref{tab:exercicio_4_critica_1}, os 11 valores com erro maior que $1 \%$ ficam entre $0.95$ e $1.05$.\\
-Ao contrário do que acontece quando não realizamos o ajuste que tem uma quantidade que é praticamente $50 \%$ dos itens que tem o módulo entre 0.95 e 300.\\
+Analisando os intervalos de valores com erro segundo Tabela~\ref{tab:exercicio_4_critica_1}, os 11 valores com erro maior que $1 \%$ ficam entre $0.95$ e $1.05$.
+Ao contrário do que acontece quando não realizamos o ajuste. A quantidade, neste último caso, é praticamente $50 \%$ dos itens que testamos em quase todo o range tal que o módulo de $x$ é maior que $0.95$.\\
 Assim, o ajuste foi muito eficiente e reduz substancialmente a quantidade de erros devido a convergência da série usada.
 
 \subsubsection{Apresentação dos testes solicitados}
