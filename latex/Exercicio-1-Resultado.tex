@@ -90,10 +90,11 @@ Agora com as derivadas em mãos:
 
 \[
     \begin{aligned}
-        f'(x) =    \frac{6}{5 + 6x} \\
-        f''(x) =   \frac{-36}{ (5 + 6x)^{2} } \\
-        f'''(x) =  \frac{432}{ (5 + 6x)^{3} } \\
-        f''''(x) = \frac{-7776}{(5 + 6x)^{4}}\\
+        f(x)     =  \log(5 + x \cdot 6)        \\
+        f'(x)    =  \frac{6}{5 + 6x}           \\
+        f''(x)   =  \frac{-36}{ (5 + 6x)^{2} } \\
+        f'''(x)  =  \frac{432}{ (5 + 6x)^{3} } \\
+        f''''(x) =  \frac{-7776}{(5 + 6x)^{4}} \\
     \end{aligned}
 \]
 
@@ -114,30 +115,30 @@ Vamos avaliar o valor em $X_0 = 0$ para cada uma das derivadas.
 Montando as Séries temos:
     \begin{gather*}
         P_0 (x) = f(0) = \log(5) = 1.6094\\
-        P_1 (x) = P_0(x) + \frac{\frac{6}{5}}{1!} \cdot x = P_0(x) + \frac{6 \cdot x}{5} \\
-        P_2 (x) = P_1(x) + \frac{\frac{-36}{25}}{2!} \cdot x^2 = P_1(x) + \frac{-36 \cdot x^2}{50} \\
-        P_3 (x) = P_2(x) + \frac{\frac{432}{25}}{3!} \cdot x^3 = P_2(x) + \frac{432 \cdot x^3}{150} \\
-        P_4 (x) = P_3(x) + \frac{\frac{7776}{625}}{4!} \cdot x^3 = P_3(x) + \frac{-7776 \cdot x^4}{15000} \\
+        P_1 (x) = P_0(x) + \frac{6}{5 \cdot 1!}    \cdot x  \\
+        P_2 (x) = P_1(x) + \frac{-36}{25 \cdot 2!} \cdot x^2 \\
+        P_3 (x) = P_2(x) + \frac{432}{125 \cdot 3!} \cdot x^3 \\
+        P_4 (x) = P_3(x) + \frac{-7776}{625 \cdot 4!} \cdot x^4 \\
     \end{gather*}
 
 \subsubsection{Gerar dados em Pyhon}
 
 Com todos os coeficientes do polinômio podemos codificar e executando o programa em Python com o comando para criar o arquivo com os dados: python exercicio1.py
 
-%%\newpage
 
 \subsubsection{Imprimir Gráfico usando GnuPlot}
 
 Agora com todas as funções definidas, e dados gerados podemos gerar o gráfico para visualizar as diferenças:
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=.82\textwidth]{imagens/exercicio1.png}
-    \caption{Função $\log(5+6*x)$ aproximada pelo série de taylor em torno de $X_0=0$}
+    \includegraphics[width=.6\textwidth]{imagens/exercicio1.png}
+    \caption{Função $\log(5+6 \cdot x)$ aproximada pelo série de taylor em torno de $X_0=0$}
     \label{fig:grafico}
 \end{figure}
 
-\newpage
+No gráfico da Figura~\ref{fig:grafico} podemos ver o resultado nos extremos e ver que está conciso, pois na região central as linhas se unem perfeitamente e nos extremos do gráfico quanto maior o valor de n em $P_n(x)$ menor o distância da $F(x)$.
+
 
 \subsubsection{Apresentar código Python e GnuPlot}
 

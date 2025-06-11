@@ -55,19 +55,19 @@ Assim temos que $f(x) = arctan(x) = x + \frac{-x^3}{3} + \frac{x^5}{5} + \mathel
 Foi implementado a série usando o algoritmo de Hormer com sucesso, no entando, para valores acima de um $(1.0)$ a série diverge.
 Isso causa um erros consideráveis. Parar evitar esse problema utilizamos relações trigonométricas do site \cite{site-geek} para manter o valor de x menor que 1.
 
-Isso foi colocado no código na função \texttt{calcula\_f\_x\_taylor\_com\_horner\_ajustado}. Está sendo utilizado algumas características do \texttt{arctan} para ficarmos entre $0.$ e $1.$ além das simetrias de uma função impar.
+Isso foi colocado no código na função \texttt{calcula\_f\_x\_taylor\_com\_horner\_ajustado}. Foi explorado características do \texttt{arctan} para manter o valor de $x$ entre $0.$ e $1.$ além das simetrias de uma função impar.
 
 \subsubsection{Melhoramentos para redução das diferenças}
 \label{sec:melhoramentos-serie-arctan}
+
 Foi usado a caractéricas que $arctan(-x) = -arctan(x)$. Essa característica mantém os valores de $x$ sempre no domínio positivo.\\
 Outra característica foi usada para manter o domínio de x entre 0 e 1 que foi:
+
 \begin{itemize}
     \item[] $\arctan\left(\frac{1}{x}\right) = \frac{\pi}{2} - \arctan(x) = \mathrm{arccot}(x), \quad \text{se } x > 0$
 \end{itemize}
 
-O resultado final dos ajustes está na Tabela~\ref{tab:exercicio_4_resultados} e são muito significativos.\\
-
-Executando o programa com 60 mil valores de $-300$ a $+299.99$ temos:
+O resultado final dos ajustes está na Tabela~\ref{tab:exercicio_4_resultados} e são muito significativos e também foi realido um teste complementar com 60 mil valores entre $-300$ a $+299.99$ temos:
 
 \begin{table}[h!]
     \centering
@@ -84,7 +84,7 @@ Executando o programa com 60 mil valores de $-300$ a $+299.99$ temos:
 \end{table}
 
 Analisando os intervalos de valores com erro segundo Tabela~\ref{tab:exercicio_4_critica_1}, os 11 valores com erro maior que $1 \%$ ficam entre $0.95$ e $1.05$.
-Ao contrário do que acontece quando não realizamos o ajuste. A quantidade, neste último caso, é praticamente $50 \%$ dos itens que testamos em quase todo o range tal que o módulo de $x$ é maior que $0.95$.\\
+Ao contrário do que acontece quando não realizamos o ajuste. A quantidade, neste último caso, é praticamente $50 \%$ dos itens que testamos em quase todo o range tal que o módulo de $x$ é maior que $0.95$.
 Assim, o ajuste foi muito eficiente e reduz substancialmente a quantidade de erros devido a convergência da série usada.
 
 \subsubsection{Apresentação dos testes solicitados}
